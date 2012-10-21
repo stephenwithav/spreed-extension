@@ -1,0 +1,10 @@
+{
+  "name": "Spreed",
+  "description": "Speed reading Chrome extension.",
+  "version": "0.1",
+  "permissions": ["contextMenus"],
+  "background": {
+    "scripts": ["menu.js"]
+  },
+  "manifest_version": 1
+}
