@@ -1,9 +1,9 @@
-function callbackTestFunction() { //works
-  alert("test");
+function callbackTestFunction(obj) { //works
+  alert(obj.selectionText);
 }
 
 
-// Create selection menu item
+// Create selection menu
 var contexts = ["selection"];
 for (var i = 0; i < contexts.length; i++) {
   var context = contexts[i];
