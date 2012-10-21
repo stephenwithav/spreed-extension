@@ -3,6 +3,8 @@ var wpm;
 var chunkSize;
 
 var wordDiv;
+var wpmDiv;
+var chunkSizeDiv;
 var wordIndex;
 
 var pauseButton;
@@ -22,7 +24,13 @@ function init() {
 		wordDiv.innerHTML = splitText[wordIndex];
 
 		wpm = 300;
+		wpmDiv = document.getElementById('wpm');
+		wpmDiv.innerHTML = wpm+" wpm";
+
 		chunkSize = 1;
+		chunkSizeDiv = document.getElementById('chunkSize');
+		chunkSizeDiv.innerHTML = chunkSize+" words at a time";
+
 		delay = 1/(wpm/60)*1000;
 		pauseButton = document.getElementById('pause');
 		pauseButton.disabled = true;
@@ -30,6 +38,7 @@ function init() {
 		//add play button listener		
 		playButton = document.getElementById('play');
 		playButton.addEventListener("click", play, false);
+		pauseButton.addEventListener("click", pause, false);
 	}
 }
 
@@ -60,7 +69,9 @@ function nextWord() {
 }
 
 function pause() {
-
+	clearInterval(wordTimer);
+	playButton.disabled=false;
+	pauseButton.disabled=true;
 }
 
 document.addEventListener("DOMContentLoaded", init, false);
