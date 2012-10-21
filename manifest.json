@@ -1,10 +1,16 @@
 {
   "name": "Spreed",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["jquery.js", "app.js"]
+    }
+  ],
   "description": "Speed reading Chrome extension.",
   "version": "0.1",
   "permissions": ["contextMenus"],
   "background": {
     "scripts": ["menu.js"]
   },
-  "manifest_version": 1
+  "manifest_version": 2
 }
