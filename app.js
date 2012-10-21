@@ -40,11 +40,23 @@ function isEmpty(str) {
 function play() {
 	//alert("play");
 	wordTimer = setInterval(function(){nextWord()},delay);
+	//disable play, enable pause
+	playButton.disabled=true;
+	pauseButton.disabled=false;
 }
 function nextWord() {
 	wordIndex = wordIndex+1;
-
-	wordDiv.innerHTML = splitText[wordIndex];
+	if (wordIndex>=splitText.length) {
+		//reset
+		clearInterval(wordTimer);
+		//enable play, disable pause
+		playButton.disabled=false;
+		pauseButton.disabled=true;
+		wordIndex=-1;
+	}
+	else {
+		wordDiv.innerHTML = splitText[wordIndex];
+	}
 }
 
 function pause() {
