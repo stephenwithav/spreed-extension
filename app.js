@@ -12,16 +12,25 @@ var playButton;
 
 var wordTimer;
 
+function groupWords(splitText, chunkSize) {
+	var newSplitText=new Array();
+	chunkCount=0;
+	for (var i=0; i<splitText.length; i=i+chunkSize) {
+		var newChunk="";
+		for (var j=0; j<chunkSize; j++) {
+			newChunk = newChunk + splitText[i+j] + " ";
+		}
+		newSplitText.push(newChunk);
+	}
+	return newSplitText;
+}
+
 function init() {
 	//alert(localStorage.getItem("selectedText"));
 	//tokenize selected text (make sure there's stuff in it too)
 	var selectedText = localStorage.getItem("selectedText");
 	if (!isEmpty(selectedText)) {
 		splitText = selectedText.split(" ");
-		//set first word
-		wordIndex = 0;
-		wordDiv = document.getElementById('word');
-		wordDiv.innerHTML = splitText[wordIndex];
 
 		wpm = 300;
 		wpmDiv = document.getElementById('wpm');
@@ -31,6 +40,16 @@ function init() {
 		chunkSizeDiv = document.getElementById('chunkSize');
 		chunkSizeDiv.innerHTML = "Words at a time: "+chunkSize;
 
+		//set first word
+		wordIndex = 0;
+
+		//group words depending on chunk size
+		splitText = groupWords(splitText,chunkSize)
+
+		wordDiv = document.getElementById('word');
+		wordDiv.innerHTML = splitText[wordIndex];
+
+		
 		delay = 1/(wpm/60)*1000;
 		pauseButton = document.getElementById('pause');
 		pauseButton.disabled = true;

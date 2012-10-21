@@ -6,3 +6,16 @@ body {
              Times,
              serif;
 }
+
+#container {
+	width:470px;
+	height: 270px;
+	margin:auto;
+	margin-top:auto;
+}
+
+#word {
+	padding: 20px 10px 10px 20px;
+	text-align: center;
+	font-size:3em;
+}
