@@ -18,7 +18,9 @@ function groupWords(splitText, chunkSize) {
 	for (var i=0; i<splitText.length; i=i+chunkSize) {
 		var newChunk="";
 		for (var j=0; j<chunkSize; j++) {
-			newChunk = newChunk + splitText[i+j] + " ";
+			if (i+j<splitText.length) {
+				newChunk = newChunk + splitText[i+j] + " ";
+			}
 		}
 		newSplitText.push(newChunk);
 	}
@@ -38,7 +40,7 @@ function init() {
 
 		chunkSize = 1;
 		chunkSizeDiv = document.getElementById('chunkSize');
-		chunkSizeDiv.innerHTML = "Words at a time: "+chunkSize;
+		//chunkSizeDiv.innerHTML = "Words at a time: "+chunkSize;
 
 		//set first word
 		wordIndex = 0;
