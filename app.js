@@ -25,11 +25,11 @@ function init() {
 
 		wpm = 300;
 		wpmDiv = document.getElementById('wpm');
-		wpmDiv.innerHTML = wpm+" wpm";
+		wpmDiv.innerHTML = "WPM: "+wpm;
 
 		chunkSize = 1;
 		chunkSizeDiv = document.getElementById('chunkSize');
-		chunkSizeDiv.innerHTML = chunkSize+" words at a time";
+		chunkSizeDiv.innerHTML = "Words at a time: "+chunkSize;
 
 		delay = 1/(wpm/60)*1000;
 		pauseButton = document.getElementById('pause');
