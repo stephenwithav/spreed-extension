@@ -52,14 +52,18 @@ function init() {
 		wordDiv.innerHTML = splitText[wordIndex];
 
 		
-		delay = 1/(wpm/60)*1000;
+		
 		pauseButton = document.getElementById('pause');
 		pauseButton.disabled = true;
 		
-		//add play button listener		
+		//add play/pause button listeners		
 		playButton = document.getElementById('play');
 		playButton.addEventListener("click", play, false);
 		pauseButton.addEventListener("click", pause, false);
+		
+		//add increase/decrease listeners
+		document.getElementById('increase_wpm').addEventListener("click",increaseWPM,false);
+		document.getElementById('decrease_wpm').addEventListener("click",decreaseWPM,false);
 	}
 }
 
@@ -68,6 +72,7 @@ function isEmpty(str) {
 }
 
 function play() {
+	delay = 1/(wpm/60)*1000;
 	//alert("play");
 	wordTimer = setInterval(function(){nextWord()},delay);
 	//disable play, enable pause
@@ -93,6 +98,20 @@ function pause() {
 	clearInterval(wordTimer);
 	playButton.disabled=false;
 	pauseButton.disabled=true;
+}
+
+function increaseWPM() {
+	if (wpm+50<1000) {
+		wpm = wpm+50;
+		wpmDiv.innerHTML = "WPM: "+wpm;
+	}
+}
+
+function decreaseWPM() {
+	if (wpm-50>0) {
+		wpm = wpm-50;
+		wpmDiv.innerHTML = "WPM: "+wpm;
+	}
 }
 
 document.addEventListener("DOMContentLoaded", init, false);

@@ -5,6 +5,8 @@ body {
              "Times New Roman",
              Times,
              serif;
+    background:black;
+    color:white;
 }
 
 #container {
@@ -22,4 +24,19 @@ body {
 
 .large{
 	font-size:4em;
+}
+#wpm {
+	float:left;
+	width:80px;
+}
+#wpm-buttons button{
+	float:left;
+	width:30px;
+	margin-left:5px;
+	font-size:14px;
+}
+
+#controls button{
+	font-size:2em;
+
 }
