@@ -34,11 +34,18 @@ h1,h2,h3 {
 	margin:auto;
 	margin-top:auto;
 }
+#status {
+	float:left;
 
+	width:470px;
+}
 #word {
-	padding: 80px 10px 80px 10px;
+	float:left;
 	text-align: center;
-	
+	padding-top:70px;
+
+	height: 140px;
+	width:470px;
 }
 
 .large{
