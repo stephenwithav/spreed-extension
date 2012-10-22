@@ -1,12 +1,12 @@
 {
-  "name": "Spreed",
+  "name": "Spreed - speed read the web",
   "content_scripts": [
     {
       "matches": ["http://*/*"],
       "js": ["jquery.js", "app.js"]
     }
   ],
-  "description": "Speed reading Chrome extension.",
+  "description": "Spreed makes speed reading online content easy. Just select text, right click, and click 'Spreed'. Using Spreed, you can train yourself to double your reading speed.",
   "version": "1.0",
   "permissions": ["contextMenus"],
   "background": {

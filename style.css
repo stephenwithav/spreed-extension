@@ -36,14 +36,12 @@ h1,h2,h3 {
 }
 #status {
 	float:left;
-
 	width:470px;
 }
 #word {
 	float:left;
 	text-align: center;
 	padding-top:70px;
-
 	height: 140px;
 	width:470px;
 }
