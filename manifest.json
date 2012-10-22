@@ -6,7 +6,7 @@
       "js": ["jquery.js", "app.js"]
     }
   ],
-  "description": "Spreed makes speed reading online content easy. Just select text, right click, and click 'Spreed'. Using Spreed, you can train yourself to double your reading speed.",
+  "description": "Spreed makes speed reading online text content easy. Use Spreed and train yourself to double your reading speed.",
   "version": "1.0",
   "permissions": ["contextMenus"],
   "background": {
