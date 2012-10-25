@@ -35,6 +35,10 @@ function init() {
 		splitText = selectedText.split(" ");
 
 		wpm = 300;
+		if (localStorage.getItem("speed")>0) {
+			wpm = localStorage.getItem("speed");
+		}
+		
 		wpmDiv = document.getElementById('wpm');
 		wpmDiv.innerHTML = "WPM: "+wpm;
 
@@ -104,6 +108,7 @@ function increaseWPM() {
 	if (wpm+50<1000) {
 		wpm = wpm+50;
 		wpmDiv.innerHTML = "WPM: "+wpm;
+		localStorage.setItem("speed", wpm);
 	}
 }
 
@@ -111,6 +116,7 @@ function decreaseWPM() {
 	if (wpm-50>0) {
 		wpm = wpm-50;
 		wpmDiv.innerHTML = "WPM: "+wpm;
+		localStorage.setItem("speed", wpm);
 	}
 }
 
