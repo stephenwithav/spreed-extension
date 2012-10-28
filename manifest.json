@@ -3,11 +3,11 @@
   "content_scripts": [
     {
       "matches": ["http://*/*"],
-      "js": ["jquery.js", "app.js"]
+      "js": ["jquery.js", "app.js", "jquery.fittext.js"]
     }
   ],
   "description": "Spreed makes speed reading online text content easy. Use Spreed and train yourself to double your reading speed.",
-  "version": "1.2",
+  "version": "1.3",
   "permissions": ["contextMenus"],
   "background": {
     "scripts": ["menu.js"]
