@@ -54,7 +54,7 @@ function init() {
 
 		wordDiv = document.getElementById('word');
 		wordDiv.innerHTML = splitText[wordIndex];
-		wordDiv.fitText(); //make font size of word auto adjusting
+		$("#word").fitText();
 		
 		
 		pauseButton = document.getElementById('pause');

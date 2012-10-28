@@ -1,7 +1,7 @@
 function callbackTestFunction(obj) { //works
   localStorage.setItem("selectedText", obj.selectionText);
   //alert(localStorage.getItem("selectedText")); 
-  popupwindow("app.html", "", 500, 300);
+  popupwindow("app.html", "", 700, 400);
 }
 
 function popupwindow(url, title, w, h) {

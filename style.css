@@ -28,27 +28,33 @@ h1,h2,h3 {
 	padding-left:10px;
 }
 
-#container {
-	width:470px;
-	height: 270px;
-	margin:auto;
-	margin-top:auto;
+.container {
+	width: 95%;
+	height:95%;
+	margin:0 auto;
 }
 #status {
 	float:left;
-	width:470px;
-}
-#word {
-	float:left;
-	text-align: center;
-	padding-top:70px;
-	height: 140px;
-	width:470px;
+	width:100%;
 }
 
-.large{
-	font-size:4em;
+header{
+
 }
+
+h1 {
+	float:left;
+	text-align: center;
+	display:block;
+	margin-top:auto;
+	margin-bottom:auto;
+	width:100%;
+	padding-top:15%;
+	padding-bottom:15%;
+	/*height: 140px;
+	width:470px;*/
+}
+
 #wpm {
 	float:left;
 	width:80px;
@@ -62,5 +68,5 @@ h1,h2,h3 {
 
 #controls button{
 	font-size:2em;
-
+	float:left;
 }

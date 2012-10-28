@@ -1,13 +1,17 @@
 <html>
 <head>
 	<title>Spreed - the speed reading  extension</title>
+	<script src="jquery.js"></script>
+	<script src="jquery.fittext.js"></script>
+
 	<script src="app.js"></script>
+	
 	<LINK href="style.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
-	<div id="container">
+	<div class="container">
 		<div id="status">
 			<div id="wpm"></div>
 			
@@ -19,8 +23,8 @@
 			<div id="chunkSize"></div>
 		</div>
 
-		<div id="word" class="large">
-		</div>
+		<header><h1 id="word">
+		</h1></header>
 
 		<div id="controls">
 			<button id="play">Play</button>
@@ -28,7 +32,6 @@
 		</div>
 	</div>
 
-	
 </body>
 
 </html>
