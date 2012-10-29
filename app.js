@@ -54,7 +54,7 @@ function init() {
 
 		wordDiv = document.getElementById('word');
 		wordDiv.innerHTML = splitText[wordIndex];
-		$("#word").fitText();
+		//$("#word").fitText();
 		
 		
 		pauseButton = document.getElementById('pause');
