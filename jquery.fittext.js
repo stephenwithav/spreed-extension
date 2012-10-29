@@ -40,4 +40,37 @@
 
   };
 
+  $.fn.fitText2 = function( container ) {
+     
+  
+    return this.each(function(){
+
+      // Store the object
+      var $this = $(this); 
+        
+      // Resizer() resizes items based on the object width divided by the compressor * 10
+      var resizer = function () {
+        console.log("$this width: " + $this.width());
+        console.log("container width: "+container.width());
+
+        while( $this.width() > container.width() ) {
+          $this.css('font-size', (parseInt($this.css('font-size')) - 1) + "px" );
+        }
+
+        while( $this.width() < container.width() ) {
+          $this.css('font-size', (parseInt($this.css('font-size')) + 1) + "px" );
+        }
+
+      };
+
+      // Call once to set.
+      resizer();
+        
+      // Call on resize. Opera debounces their resize by default. 
+      $(window).on('resize', resizer);
+        
+    });
+
+  };
+
 })( jQuery );

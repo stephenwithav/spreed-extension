@@ -54,7 +54,11 @@ function init() {
 
 		wordDiv = document.getElementById('word');
 		wordDiv.innerHTML = splitText[wordIndex];
-		//$("#word").fitText();
+
+
+		//autoResizeWord();
+
+		//$("#word").fitText2($("#word-container"));
 		
 		
 		pauseButton = document.getElementById('pause');
@@ -68,8 +72,14 @@ function init() {
 		//add increase/decrease listeners
 		document.getElementById('increase_wpm').addEventListener("click",increaseWPM,false);
 		document.getElementById('decrease_wpm').addEventListener("click",decreaseWPM,false);
+	
+
+
+		return;
 	}
 }
+
+
 
 function isEmpty(str) {
     return (!str || 0 === str.length);
@@ -96,6 +106,9 @@ function nextWord() {
 	else {
 		wordDiv.innerHTML = splitText[wordIndex];
 	}
+
+	//console.log("#container width: "+$("#container").width());
+	//console.log("#word-continer width: "+$("#word-container").width());
 }
 
 function pause() {
@@ -120,6 +133,9 @@ function decreaseWPM() {
 	}
 }
 
+
+
 document.addEventListener("DOMContentLoaded", init, false);
+
 
 

@@ -3,7 +3,8 @@
   "content_scripts": [
     {
       "matches": ["http://*/*"],
-      "js": ["jquery.js", "jquery.fittext.js", "app.js"]
+      "js": ["jquery.js", "jquery.fittext.js", "app.js"],
+      "run_at": "document_end"
     }
   ],
   "description": "Spreed makes speed reading online text content easy. Use Spreed and train yourself to double your reading speed.",

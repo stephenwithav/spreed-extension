@@ -28,9 +28,10 @@ h1,h2,h3 {
 	padding-left:10px;
 }
 
-.container {
+#container {
 	width: 95%;
 	height:95%;
+
 	margin:0 auto;
 }
 #status {
@@ -38,19 +39,26 @@ h1,h2,h3 {
 	width:100%;
 }
 
-header{
+#word-container{
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
 
+	width:100%;
+	float:left;
+	padding-top:17%;
+	padding-bottom:17%;
+	font-size:2.5em;
 }
 
 h1 {
-	float:left;
-	text-align: center;
+	margin-left:auto;
+	margin-right:auto;
 	display:block;
 	margin-top:auto;
 	margin-bottom:auto;
-	width:100%;
-	padding-top:17%;
-	padding-bottom:17%;
+	width:auto;
+
 	/*height: 140px;
 	width:470px;*/
 }
@@ -60,13 +68,17 @@ h1 {
 	width:80px;
 }
 #wpm-buttons button{
+
 	float:left;
 	width:30px;
 	margin-left:5px;
 	font-size:14px;
 }
-
+#controls{
+	clear:both;
+}
 #controls button{
 	font-size:2em;
 	float:left;
+
 }
