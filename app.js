@@ -4,6 +4,8 @@ var chunkSize;
 
 var wordDiv;
 var wpmDiv;
+var fontSizeDiv;
+
 var chunkSizeDiv;
 var wordIndex;
 
@@ -33,14 +35,29 @@ function init() {
 	var selectedText = localStorage.getItem("selectedText");
 	if (!isEmpty(selectedText)) {
 		splitText = selectedText.split(" ");
-
+		
+		//wpm
 		wpm = 300;
 		if (localStorage.getItem("speed")>0) {
 			wpm = localStorage.getItem("speed");
 		}
+		wpm = parseInt(wpm);
 		
 		wpmDiv = document.getElementById('wpm');
 		wpmDiv.innerHTML = "WPM: "+wpm;
+		
+		//font size
+		fontSize=40; //in pixels
+		if (localStorage.getItem("font-size")>0) {
+			fontSize = localStorage.getItem("font-size");
+		}
+		fontSize = parseInt(fontSize);
+		//set word font size
+		setFontSize($("#word-container"),fontSize);
+
+		fontSizeDiv = document.getElementById('font-size-div')
+		fontSizeDiv.innerHTML = "Font size: "+fontSize;
+
 
 		chunkSize = 1;
 		//chunkSizeDiv = document.getElementById('chunkSize');
@@ -73,9 +90,9 @@ function init() {
 		document.getElementById('increase_wpm').addEventListener("click",increaseWPM,false);
 		document.getElementById('decrease_wpm').addEventListener("click",decreaseWPM,false);
 	
-
-
-		return;
+		document.getElementById('increase-font-size').addEventListener("click",increaseFontSize,false);
+		document.getElementById('decrease-font-size').addEventListener("click",decreaseFontSize,false);
+		
 	}
 }
 
@@ -118,7 +135,9 @@ function pause() {
 }
 
 function increaseWPM() {
+	
 	if (wpm+50<1000) {
+		console.log("increase");
 		wpm = wpm+50;
 		wpmDiv.innerHTML = "WPM: "+wpm;
 		localStorage.setItem("speed", wpm);
@@ -133,7 +152,27 @@ function decreaseWPM() {
 	}
 }
 
+function setFontSize(obj, value) {
+	obj.css('font-size', value+"px");
+}
 
+function increaseFontSize() {
+	if (fontSize+5<105) {
+		fontSize = fontSize+5;
+		fontSizeDiv.innerHTML="Font size: "+fontSize;
+		localStorage.setItem("font-size",fontSize);
+		setFontSize($("#word-container"),fontSize);
+	}
+}
+
+function decreaseFontSize() {
+	if (fontSize-5>=5) {
+		fontSize = fontSize-5;
+		fontSizeDiv.innerHTML="Font size: "+fontSize;
+		localStorage.setItem("font-size",fontSize);
+		setFontSize($("#word-container"),fontSize);
+	}
+}
 
 document.addEventListener("DOMContentLoaded", init, false);
 
