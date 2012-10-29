@@ -43,7 +43,7 @@ function init() {
 		wpmDiv.innerHTML = "WPM: "+wpm;
 
 		chunkSize = 1;
-		chunkSizeDiv = document.getElementById('chunkSize');
+		//chunkSizeDiv = document.getElementById('chunkSize');
 		//chunkSizeDiv.innerHTML = "Words at a time: "+chunkSize;
 
 		//set first word
