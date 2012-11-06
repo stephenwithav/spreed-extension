@@ -47,7 +47,7 @@ function init() {
 		wpmDiv.innerHTML = "WPM: "+wpm;
 		
 		//font size
-		fontSize=40; //in pixels
+		fontSize=35; //in pixels
 		if (localStorage.getItem("font-size")>0) {
 			fontSize = localStorage.getItem("font-size");
 		}
