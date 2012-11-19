@@ -11,6 +11,7 @@ var wordIndex;
 
 var pauseButton;
 var playButton;
+var rewindButton;
 
 var wordTimer;
 
@@ -60,8 +61,12 @@ function init() {
 
 
 		chunkSize = 1;
-		//chunkSizeDiv = document.getElementById('chunkSize');
-		//chunkSizeDiv.innerHTML = "Words at a time: "+chunkSize;
+		if (localStorage.getItem("chunkSize")>0) {
+			chunkSize = localStorage.getItem("chunkSize");
+		}
+		chunkSize = parseInt(chunkSize);
+		chunkSizeDiv = document.getElementById('chunkSize');
+		chunkSizeDiv.innerHTML = "Words at a time: "+chunkSize;
 
 		//set first word
 		wordIndex = 0;
@@ -80,11 +85,14 @@ function init() {
 		
 		pauseButton = document.getElementById('pause');
 		pauseButton.disabled = true;
+
+		rewindButton = document.getElementById('rewind');
 		
 		//add play/pause button listeners		
 		playButton = document.getElementById('play');
 		playButton.addEventListener("click", play, false);
 		pauseButton.addEventListener("click", pause, false);
+		rewindButton.addEventListener("click", rewind, false);
 		
 		//add increase/decrease listeners
 		document.getElementById('increase_wpm').addEventListener("click",increaseWPM,false);
@@ -93,15 +101,29 @@ function init() {
 		document.getElementById('increase-font-size').addEventListener("click",increaseFontSize,false);
 		document.getElementById('decrease-font-size').addEventListener("click",decreaseFontSize,false);
 		
+		document.getElementById('increase-chunkSize').addEventListener("click",increaseChunkSize,false);
+		document.getElementById('decrease-chunkSize').addEventListener("click",decreaseChunkSize,false);
+
+		//update wpm multiplier, depending on word chunk size
+		updateWPMMultiplier();
+			
 	}
 }
 
 
+function updateWPMMultiplier() {
+	if (chunkSize>1) {
+			wpmDiv.innerHTML = "WPM: "+wpm+"&#215; "+chunkSize;
+	}
+}
 
 function isEmpty(str) {
     return (!str || 0 === str.length);
 }
-
+function rewind() {
+	pause();
+	init();
+}
 function play() {
 	delay = 1/(wpm/60)*1000;
 	//alert("play");
@@ -141,6 +163,7 @@ function increaseWPM() {
 		wpm = wpm+50;
 		wpmDiv.innerHTML = "WPM: "+wpm;
 		localStorage.setItem("speed", wpm);
+		updateWPMMultiplier();
 	}
 }
 
@@ -149,6 +172,7 @@ function decreaseWPM() {
 		wpm = wpm-50;
 		wpmDiv.innerHTML = "WPM: "+wpm;
 		localStorage.setItem("speed", wpm);
+		updateWPMMultiplier();
 	}
 }
 
@@ -171,6 +195,24 @@ function decreaseFontSize() {
 		fontSizeDiv.innerHTML="Font size: "+fontSize;
 		localStorage.setItem("font-size",fontSize);
 		setFontSize($("#word-container"),fontSize);
+	}
+}
+
+function increaseChunkSize() {
+	if (chunkSize+1<=6) {
+		chunkSize = chunkSize+1;
+		chunkSizeDiv.innerHTML="Words at a time: "+chunkSize;
+		localStorage.setItem("chunkSize",chunkSize);
+		init();
+	}
+}
+
+function decreaseChunkSize() {
+	if (chunkSize-1>=1) {
+		chunkSize = chunkSize-1;
+		chunkSizeDiv.innerHTML="Words at a time: "+chunkSize;
+		localStorage.setItem("chunkSize",chunkSize);
+		init();
 	}
 }
 
