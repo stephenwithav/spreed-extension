@@ -103,6 +103,8 @@ function init() {
 		
 		document.getElementById('increase-chunkSize').addEventListener("click",increaseChunkSize,false);
 		document.getElementById('decrease-chunkSize').addEventListener("click",decreaseChunkSize,false);
+		
+		document.getElementById('small-donate-link').addEventListener("click",donateClick,false);
 
 		//update wpm multiplier, depending on word chunk size
 		updateWPMMultiplier();
@@ -150,6 +152,11 @@ function nextWord() {
 	//console.log("#word-continer width: "+$("#word-container").width());
 }
 
+function donateClick() {
+	chrome.tabs.create({url:'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7BDUJ9WFCEPLG'});
+}
+
+
 function pause() {
 	clearInterval(wordTimer);
 	playButton.disabled=false;
@@ -159,7 +166,7 @@ function pause() {
 function increaseWPM() {
 	
 	if (wpm+50<1000) {
-		console.log("increase");
+		//console.log("increase");
 		wpm = wpm+50;
 		wpmDiv.innerHTML = "WPM: "+wpm;
 		localStorage.setItem("speed", wpm);

@@ -19,6 +19,23 @@ h1,h2,h3 {
 	font-size:35px;
 }
 
+#small-donate-link {
+	color:white;
+	background:black;
+	font-size:12px;
+}
+#donate {
+	margin-top:15px;
+	float:right;
+}
+#small-donate-link:hover {
+	text-decoration: none;
+}
+
+#donate-text {
+	font-size:12px;
+}
+
 #donate-link:hover{
 	text-decoration: none;
 }

@@ -7,7 +7,7 @@
     }
   ],
   "description": "Spreed makes speed reading online text content easy. Use Spreed and train yourself to double your reading speed.",
-  "version": "1.4",
+  "version": "1.4.1",
   "permissions": ["contextMenus"],
   "background": {
     "scripts": ["menu.js"]
