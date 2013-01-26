@@ -1,6 +1,7 @@
 var splitText;
 var wpm;
 var chunkSize;
+var style;
 
 var wordDiv;
 var wpmDiv;
@@ -14,6 +15,9 @@ var playButton;
 var rewindButton;
 
 var wordTimer;
+
+var width;
+var height;
 
 function groupWords(splitText, chunkSize) {
 	var newSplitText=new Array();
@@ -36,6 +40,16 @@ function init() {
 	var selectedText = localStorage.getItem("selectedText");
 	if (!isEmpty(selectedText)) {
 		splitText = selectedText.split(" ");
+
+		
+
+		//style
+		style = 1; //default: 1
+		if (localStorage.getItem("style")>0) {
+			style=localStorage.getItem("style");
+		}
+		style = parseInt(style);
+		changeStyle();
 		
 		//wpm
 		wpm = 300;
@@ -105,6 +119,8 @@ function init() {
 		document.getElementById('decrease-chunkSize').addEventListener("click",decreaseChunkSize,false);
 		
 		document.getElementById('small-donate-link').addEventListener("click",donateClick,false);
+
+		document.getElementById('invert-colors').addEventListener("click",invertColors,false);
 
 		//update wpm multiplier, depending on word chunk size
 		updateWPMMultiplier();
@@ -221,6 +237,32 @@ function decreaseChunkSize() {
 		localStorage.setItem("chunkSize",chunkSize);
 		init();
 	}
+}
+function changeStyle() {
+	if (style==2)
+		document.getElementById("css-style").href="style2.css";
+	else if (style==1)
+		document.getElementById("css-style").href="style.css";
+}
+function invertColors() {
+	if (style==2)
+		style = 1;
+	else if (style==1)
+		style = 2;
+	console.log("new style "+style);
+	localStorage.setItem("style",style);
+	changeStyle();
+}
+
+window.onresize = resize;
+
+function resize()
+{
+ console.log(window.innerWidth);
+ console.log(window.innerHeight);
+
+ localStorage.setItem("width",window.innerWidth);
+ localStorage.setItem("height",window.innerHeight);
 }
 
 document.addEventListener("DOMContentLoaded", init, false);
