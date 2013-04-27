@@ -27,8 +27,14 @@ function groupWords(splitText, chunkSize) {
 		for (var j=0; j<chunkSize; j++) {
 			if (i+j<splitText.length) {
 				newChunk = newChunk + splitText[i+j] + " ";
+
 			}
 		}
+		
+		if (newChunk==" ") {
+			newChunk = "_";
+		}
+
 		newSplitText.push(newChunk);
 	}
 	return newSplitText;
@@ -87,9 +93,10 @@ function init() {
 
 		//group words depending on chunk size
 		splitText = groupWords(splitText,chunkSize)
+		console.log(splitText); //debug
 
 		wordDiv = document.getElementById('word');
-		wordDiv.innerHTML = splitText[wordIndex];
+		wordDiv.innerHTML = splitText[wordIndex]; 
 
 
 		//autoResizeWord();
@@ -124,6 +131,9 @@ function init() {
 
 		//update wpm multiplier, depending on word chunk size
 		updateWPMMultiplier();
+
+		//assign hotkeys
+
 			
 	}
 }
@@ -148,7 +158,9 @@ function play() {
 	wordTimer = setInterval(function(){nextWord()},delay);
 	//disable play, enable pause
 	playButton.disabled=true;
+
 	pauseButton.disabled=false;
+
 }
 function nextWord() {
 	wordIndex = wordIndex+1;
@@ -176,7 +188,9 @@ function donateClick() {
 function pause() {
 	clearInterval(wordTimer);
 	playButton.disabled=false;
+
 	pauseButton.disabled=true;
+
 }
 
 function increaseWPM() {
@@ -249,7 +263,7 @@ function invertColors() {
 		style = 1;
 	else if (style==1)
 		style = 2;
-	console.log("new style "+style);
+	//console.log("new style "+style);
 	localStorage.setItem("style",style);
 	changeStyle();
 }
@@ -258,8 +272,8 @@ window.onresize = resize;
 
 function resize()
 {
- console.log(window.innerWidth);
- console.log(window.innerHeight);
+ //console.log(window.innerWidth);
+ //console.log(window.innerHeight);
 
  localStorage.setItem("width",window.innerWidth);
  localStorage.setItem("height",window.innerHeight);
