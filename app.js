@@ -93,7 +93,7 @@ function init() {
 
 		//group words depending on chunk size
 		splitText = groupWords(splitText,chunkSize)
-		console.log(splitText); //debug
+		//console.log(splitText); //debug
 
 		wordDiv = document.getElementById('word');
 		wordDiv.innerHTML = splitText[wordIndex]; 
@@ -133,6 +133,8 @@ function init() {
 		updateWPMMultiplier();
 
 		//assign hotkeys
+		$(document).bind('keypress', 'j', bindPlay);
+		$(document).bind('keypress', 'l', bindRewind);
 
 			
 	}
@@ -150,6 +152,7 @@ function isEmpty(str) {
 }
 function rewind() {
 	pause();
+	$(document).unbind('keypress');
 	init();
 }
 function play() {
@@ -158,8 +161,10 @@ function play() {
 	wordTimer = setInterval(function(){nextWord()},delay);
 	//disable play, enable pause
 	playButton.disabled=true;
+	$(document).unbind('keypress', bindPlay);
 
 	pauseButton.disabled=false;
+	$(document).bind('keypress', 'k', bindPause);
 
 }
 function nextWord() {
@@ -188,8 +193,10 @@ function donateClick() {
 function pause() {
 	clearInterval(wordTimer);
 	playButton.disabled=false;
+	$(document).bind('keypress', 'j', bindPlay);
 
 	pauseButton.disabled=true;
+	$(document).unbind('keypress', bindPause);
 
 }
 
@@ -277,6 +284,23 @@ function resize()
 
  localStorage.setItem("width",window.innerWidth);
  localStorage.setItem("height",window.innerHeight);
+}
+
+function bindPlay(k) {
+	if (String.fromCharCode(k.keyCode) == 'j') {
+		play();
+	}
+}
+
+function bindPause(k) {
+	if (String.fromCharCode(k.keyCode) == 'k') {
+		pause();
+	}
+}
+function bindRewind(k) {
+	if (String.fromCharCode(k.keyCode) == 'l') {
+		rewind();
+	}
 }
 
 document.addEventListener("DOMContentLoaded", init, false);
